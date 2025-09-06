@@ -9,7 +9,24 @@ import Recommend from '../recommendation/recommend'
 
 type Inputs = z.infer<typeof FormDataSchema>
 
-const wineVarieties = {
+interface WineRecommendation {
+  Title: string;
+  Description: string;
+  price: number;
+  Country: string;
+  "IMG URL": string;
+  "Grape Variety": string;
+  "Wine Type": string;
+  Gender: string;
+  Occasion: string;
+  "Trending Score": number;
+}
+
+interface Trending {
+  Title: string;
+}
+
+const wineVarieties: Record<string, string[]> = {
   "White Wine": ["Pinot Grigio", "Chardonnay", "Sauvignon Blanc", "Vermentino", "Moscato", "Riesling", "Pinot Gris", "Chenin Blanc"],
   "Red Wine": ["Malbec", "Cabernet Sauvignon", "Merlot", "Shiraz/Syrah", "Pinot Noir", "Tempranillo", "Pinot Nero"],
   "Rosé Wine": ["Grenache/Cinsault/Syrah", "Grenache", "Grenache/Cinsault/Vermentino", "Pinot Noir", "Pinot Noir/Syrah", "Pinot Noir/Chardonnay", "Shiraz/Syrah", "Zinfandel", "Grenache/Syrah", "Grenache/Cinsault"]

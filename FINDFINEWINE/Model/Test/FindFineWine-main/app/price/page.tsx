@@ -6,13 +6,25 @@ import { Pagination } from 'antd';
 import { CiSearch } from "react-icons/ci";
 import { Slider } from 'antd';
 
+interface Wine {
+    Title: string;
+    Description: string;
+    price: number;
+    Price: string;
+    Country: string;
+    "IMG URL": string;
+    "Grape Variety": string;
+    "Wine Type": string;
+    Gender: string;
+    Occasion: string;
+}
 
 const WineListPage: React.FC = () => {
-    const [wines, setWines] = useState([]);
+    const [wines, setWines] = useState<Wine[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [searchTerm, setSearchTerm] = useState('');
-    const [priceRange, setPriceRange] = useState([0, 250000]);
+    const [priceRange, setPriceRange] = useState<[number, number]>([0, 250000]);
 
     useEffect(() => {
         // Fetch the wine data from the API
@@ -39,8 +51,10 @@ const WineListPage: React.FC = () => {
         setPageSize(pageSize);
     };
 
-    const handlePriceChange = (value: [number, number]) => {
-        setPriceRange(value);
+    const handlePriceChange = (value: number | number[]) => {
+        if (Array.isArray(value) && value.length === 2) {
+            setPriceRange([value[0], value[1]]);
+        }
         setCurrentPage(1);  // Reset to first page on filter change
     };
 
@@ -50,7 +64,7 @@ const WineListPage: React.FC = () => {
         return isNaN(price) ? 0 : price;
     };
 
-    const filteredWines = wines.filter((wine: { Title: string, Price: string }) =>
+    const filteredWines = wines.filter((wine) =>
         wine.Title.toLowerCase().includes(searchTerm.toLowerCase()) && (extractPrice(wine.Price) >= priceRange[0] && extractPrice(wine.Price) <= priceRange[1])
     );
 
@@ -94,8 +108,8 @@ const WineListPage: React.FC = () => {
             {/* Render filter options here */}
 
             <section className='grid lg:grid-cols-4 w-full justify-center items-center gap-8 my-8'>
-                {currentWines.map((wine) => (
-                    <Winecard data={wine} />
+                {currentWines.map((wine, index) => (
+                    <Winecard key={index} data={wine} />
                 ))}
             </section>
             <Pagination

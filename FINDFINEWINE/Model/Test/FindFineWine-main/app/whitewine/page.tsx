@@ -6,9 +6,20 @@ import { Pagination } from 'antd';
 import { CiSearch } from "react-icons/ci";
 import Heading from '../components/heading';
 
+interface Wine {
+    Title: string;
+    Description: string;
+    price: number;
+    Country: string;
+    "IMG URL": string;
+    "Grape Variety": string;
+    "Wine Type": string;
+    Gender: string;
+    Occasion: string;
+}
 
 const WineListPage: React.FC = () => {
-    const [wines, setWines] = useState([]);
+    const [wines, setWines] = useState<Wine[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [searchTerm, setSearchTerm] = useState('');
@@ -71,8 +82,8 @@ const WineListPage: React.FC = () => {
             {/* Render filter options here */}
 
             <section className='grid lg:grid-cols-4 w-full justify-center items-center gap-8 my-8'>
-                {currentWines.map((wine) => (
-                    <Winecard data={wine} />
+                {currentWines.map((wine, index) => (
+                    <Winecard key={index} data={wine} />
                 ))}
             </section>
             <Pagination
