@@ -32,7 +32,7 @@ const Recommend: React.FC<RecommendProps> = ({ recommendations, trending, hasFet
     return <div className='text-2xl mb-4 font-basker  text-[#482817] object-center'>Your recommendations will display here.</div>
   }
 
-  if (recommendations[0].Title === "none") {
+  if (!recommendations || recommendations.length === 0 || recommendations[0]?.Title === "none") {
     return <div className='text-2xl mb-4 font-basker  text-[#482817] items-center'> There are no recommended wines for your selection.</div>
   }
   

@@ -18,7 +18,7 @@ const WineListPage: React.FC = () => {
         // Fetch the wine data from the API
         const fetchWines = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/wines');
+                const response = await fetch('http://localhost:3001/api/wines');
                 const data = await response.json();
                 setWines(data);
             } catch (error) {

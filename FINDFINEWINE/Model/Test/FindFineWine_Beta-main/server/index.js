@@ -23,7 +23,7 @@ app.post('/api/recommend', (req, res) => {
     // res.send(req.body)
     
     
-    const python = spawn('python', ['./trendwine.py', Type, variety, gender, occasion ]);
+    const python = spawn('python3', ['./trendwine.py', Type, variety, gender, occasion ]);
 
     let dataToSend = '';
     python.stdout.on('data', function (data) {

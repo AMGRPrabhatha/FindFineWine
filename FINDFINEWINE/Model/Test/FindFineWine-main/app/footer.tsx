@@ -22,8 +22,8 @@ const footer = () => {
                 </div>
                 <div className='space-y-3'>
                     <p className='flex gap-2'><IoLocationOutline className='text-xl text-[#6b21a8] '/>Galle, Sri Lanka</p>
-                    <p className='flex gap-2'><MdOutlineEmail className='text-xl text-[#6b21a8] '/>Mewan@gmail.com</p>
-                    <p className='flex gap-2'><FiPhone className='text-xl text-[#6b21a8] '/>+94 76 8 859 975</p>
+                    <p className='flex gap-2'><MdOutlineEmail className='text-xl text-[#6b21a8] '/>rasithprabatha90@gmail.com</p>
+                    <p className='flex gap-2'><FiPhone className='text-xl text-[#6b21a8] '/>+94 76 8429 896</p>
                 </div>
             </div>
             <div className="flex flex-col ">
